@@ -1,11 +1,5 @@
 <template>
-  <h1>app</h1>
+  <router-view />
 </template>
-
-<script>
-export default {
-  name: "App",
-};
-</script>
 
 <style></style>

@@ -1,9 +1,18 @@
 <template>
-  <h1>helloworld</h1>
+  <h1>{{ msg }}</h1>
 </template>
 
 <script>
-export default {};
+import { ref } from '@vue/reactivity';
+export default {
+  setup() {
+    const msg = ref('hello world');
+
+    return {
+      msg,
+    };
+  },
+};
 </script>
 
 <style></style>
