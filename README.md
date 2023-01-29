@@ -25,3 +25,36 @@ npm install --save-dev jest-transform-stub
 | jest-environment-jsdom | 브라우저에서 테스트를 실행하는 경우 DOM테스트를 하여야 하면 DOM 테스트를 위한 라이브러리 |
 | vue3-jest              | vue파일을 vue3-jest를 통해 jest를 사용할 수 있도록 하는것                                |
 | jest-transform-stub    | 이미지,css를 처리해준다.                                                                 |
+
+## jest.config.js
+
+> jest를 실행하기 위한 config 환경
+
+```javascript
+module.exports = {
+  presets: ['@babel/preset-env'],
+  moduleFileExtensions: [
+    'js',
+    'json',
+    // 모든 vue 파일(`*.vue`)을 처리하기 위해 Jest에게 알려줍니다
+    'vue',
+  ],
+  transform: {
+    // `vue-jest`를 사용하여 모든 vue 파일(`*.vue`)을 처리합니다
+    '.*\\.(vue)$': 'vue3-jest',
+    // `babel-jest`를 사용하여 모든 js 파일(`*.js`)을 처리합니다
+    '.*\\.(js)$': 'babel-jest',
+    // 이미지 처리
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+  },
+  moduleNameMapper: {
+    // 별칭 @(프로젝트/src) 사용하여 하위 경로의 파일을 맵핑합니다
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+
+  testMatch: ['**/*.spec.[jt]s?(x)', '**/*.test.[jt]s?(x)'],
+  // node_modules 경로 하위에 있는 모든 테스트 파일을 대상에서 제외합니다
+  testPathIgnorePatterns: ['/node_modules/'],
+  testEnvironment: 'jsdom',
+};
+```
