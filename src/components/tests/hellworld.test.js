@@ -19,7 +19,6 @@ describe('test 1', () => {
   });
 
   test('renders a h1', () => {
-    //  const wrapper = mount(HelloWorld);
     expect(wrapper.find('h1').text()).toEqual('hello world');
     expect(wrapper.find('h2').exists()).toBe(false);
   });
