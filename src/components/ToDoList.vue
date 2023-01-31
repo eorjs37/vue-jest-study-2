@@ -1,5 +1,12 @@
 <template>
-  <h1></h1>
+  <template v-if="list.length > 0">
+    <ul class="list">
+      <li v-for="(listItem, listIndex) in list" :key="'list' + listIndex">
+        {{ listItem.text }}
+      </li>
+    </ul>
+  </template>
+  <div class="no-list">리스트가 존재하지 않습니다.</div>
 </template>
 
 <script>

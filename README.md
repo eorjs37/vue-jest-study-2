@@ -58,3 +58,13 @@ module.exports = {
   testEnvironment: 'jsdom',
 };
 ```
+
+## mount와 shallowMount
+
+### mount
+
+> 자식의 컴퍼넌트 까지 렌더링 된것을 확인 할 수 있다. 다만 shallowMount를 많이 쓴다고 한다.
+
+### shallowMount
+
+> 자식의 컴퍼넌트까지 렌더링 하지는 않는다.
