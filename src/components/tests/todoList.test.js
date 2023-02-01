@@ -1,10 +1,27 @@
 import ToDoList from '@/components/ToDoList.vue';
 import { shallowMount } from '@vue/test-utils';
+
 /**
  * 1. list가 0 개 인경우 검색결과가 없습니다.
  * 2. list가 1개 이상인 경우 list 보여줄것
+ * 3. 리스트를 클릭할 경우 상세로 이동한다.
  */
 let wrapper = null;
+let mockFn = jest.fn();
+let mockData = [
+  {
+    idx: 1,
+    text: 'text1',
+  },
+  {
+    idx: 2,
+    text: 'text2',
+  },
+  {
+    idx: 3,
+    text: 'text3',
+  },
+];
 
 beforeEach(() => {
   //mount
