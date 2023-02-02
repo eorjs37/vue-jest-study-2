@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { todoList } from '@/api/index';
+import { onMounted } from '@vue/runtime-core';
 export default {
   props: {
     list: {
@@ -20,7 +22,11 @@ export default {
       },
     },
   },
-  setup() {},
+  setup() {
+    onMounted(async () => {
+      await todoList();
+    });
+  },
 };
 </script>
 

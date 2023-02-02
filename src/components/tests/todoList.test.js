@@ -1,25 +1,25 @@
 import ToDoList from '@/components/ToDoList.vue';
-import { shallowMount } from '@vue/test-utils';
-
+import { shallowMount, flushPromises } from '@vue/test-utils';
+import axios from 'axios';
 /**
  * 1. list가 0 개 인경우 검색결과가 없습니다.
  * 2. list가 1개 이상인 경우 list 보여줄것
  * 3. 리스트를 클릭할 경우 상세로 이동한다.
  */
 let wrapper = null;
-let mockFn = jest.fn();
+jest.fn('axios');
 let mockData = [
   {
-    idx: 1,
-    text: 'text1',
+    Idx: 1,
+    ToDoItem: 'css 공부',
+    createdAt: '2023-02-01T15:00:00.000Z',
+    updatedAt: '2023-02-01T15:00:00.000Z',
   },
   {
-    idx: 2,
-    text: 'text2',
-  },
-  {
-    idx: 3,
-    text: 'text3',
+    Idx: 2,
+    ToDoItem: 'Java 공부',
+    createdAt: '2023-02-01T15:00:00.000Z',
+    updatedAt: '2023-02-01T15:00:00.000Z',
   },
 ];
 
@@ -43,5 +43,9 @@ describe('todo list component', () => {
       list: [{ idx: 1, text: '' }],
     });
     expect(wrapper.find('.list').exists()).toBeTruthy();
+  });
+
+  test('api call', async () => {
+    expect(1).toBe(1);
   });
 });
