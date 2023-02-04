@@ -7,7 +7,8 @@ import axios from 'axios';
  * 3. 리스트를 클릭할 경우 상세로 이동한다.
  */
 let wrapper = null;
-jest.fn('axios');
+const mockFn = jest.fn();
+
 let mockData = [
   {
     Idx: 1,
