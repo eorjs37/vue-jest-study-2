@@ -1,13 +1,12 @@
 import ToDoList from '@/components/ToDoList.vue';
-import { shallowMount, flushPromises } from '@vue/test-utils';
-import axios from 'axios';
+import { shallowMount } from '@vue/test-utils';
+
 /**
  * 1. list가 0 개 인경우 검색결과가 없습니다.
  * 2. list가 1개 이상인 경우 list 보여줄것
  * 3. 리스트를 클릭할 경우 상세로 이동한다.
  */
 let wrapper = null;
-const mockFn = jest.fn();
 
 let mockData = [
   {
