@@ -12,13 +12,16 @@ beforeEach(() => {
 
 describe('axios api call', () => {
   test('호출여부 확인 ', async () => {
-    //
-    // todoList = await jest.fn().mockResolvedValue({
-    //   data: {
-    //     id: 1,
-    //     name: 'Dale Seo',
-    //   },
-    // });
+    const resultValue = {
+      data: {
+        id: 1,
+        name: 'Dale Seo',
+      },
+    };
+    const result = await todoList.mockResolvedValue({
+      resultValue,
+    });
+
     expect(todoList).toBeCalledTimes(1);
   });
 });
