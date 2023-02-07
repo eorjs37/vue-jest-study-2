@@ -1,5 +1,5 @@
 import { _axios } from '@/utils/axios';
-const todoList = () => {
+let todoList = () => {
   return _axios.get(`/api/todo`);
 };
 
