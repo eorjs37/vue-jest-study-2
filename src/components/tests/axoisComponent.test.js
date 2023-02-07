@@ -4,20 +4,21 @@ import axios from 'axios';
 import { todoList } from '@/api';
 let wrapper = null;
 
+jest.mock('@/api');
+
 beforeEach(() => {
+  todoList.mockClear();
   wrapper = shallowMount(AxiosComponent);
 });
 
-describe('test 1mounted', () => {
-  test('test1 ', async () => {
-    axios.get = jest.fn().mockResolvedValue({
+describe('axios api call', () => {
+  test('호출여부 확인 ', async () => {
+    axios.get = await jest.fn().mockResolvedValue({
       data: {
         id: 1,
         name: 'Dale Seo',
       },
     });
-    const user = await todoList();
-    console.log(user);
-    expect(1).toBe(1);
+    expect(todoList).toBeCalledTimes(1);
   });
 });
