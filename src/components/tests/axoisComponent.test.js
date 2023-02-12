@@ -1,27 +1,19 @@
 import AxiosComponent from '@/components/AxiosCompnent.vue';
 import { shallowMount } from '@vue/test-utils';
-import { todoList } from '@/api';
+import * as api from '@/api';
 let wrapper = null;
 
 jest.mock('@/api');
 
 beforeEach(() => {
-  todoList.mockClear();
   wrapper = shallowMount(AxiosComponent);
 });
 
 describe('axios api call', () => {
   test('호출여부 확인 ', async () => {
-    const resultValue = {
-      data: {
-        id: 1,
-        name: 'Dale Seo',
-      },
-    };
-    const result = await todoList.mockResolvedValue({
-      resultValue,
-    });
+    jest.spyOn(api, 'todoList').mockReturnValue('expected result');
 
-    expect(todoList).toBeCalledTimes(1);
+    expect(api.todoList).toBeCalledTimes(1);
+    expect(api.todoList()).toEqual('expected result');
   });
 });
