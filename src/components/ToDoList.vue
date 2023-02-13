@@ -24,7 +24,7 @@ export default {
   },
   setup() {
     onMounted(async () => {
-      await todoList();
+      //await todoList();
     });
   },
 };

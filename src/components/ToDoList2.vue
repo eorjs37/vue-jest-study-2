@@ -24,7 +24,11 @@ export default {
   },
   setup() {
     onMounted(async () => {
-      await todoList();
+      try {
+        await todoList();
+      } catch (error) {
+        console.error('error : ', error);
+      }
     });
   },
 };

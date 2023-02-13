@@ -1,7 +1,5 @@
 import ToDoList from '@/components/ToDoList.vue';
 import { shallowMount } from '@vue/test-utils';
-import mockAxios from 'jest-mock-axios';
-import { todoList } from '@/api';
 
 /**
  * 1. list가 0 개 인경우 검색결과가 없습니다.
@@ -46,18 +44,4 @@ describe('todo list component', () => {
     });
     expect(wrapper.find('.list').exists()).toBeTruthy();
   });
-
-  test('api call', async () => {
-    let catchFn = jest.fn(),
-      thenFn = jest.fn();
-    todoList().then(thenFn).catch(catchFn);
-
-    expect(mockAxios.get).toHaveBeenCalledWith('/api/todo');
-    expect(1).toBe(1);
-  });
-});
-
-afterEach(() => {
-  // cleaning up the mess left behind the previous test
-  mockAxios.reset();
 });

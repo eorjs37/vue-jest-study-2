@@ -22,3 +22,7 @@ mockFn('a');
 ```javascript
 mockFn.mockReturnValue('I am a mock!');
 ```
+
+### jest.fn spyOn()
+
+> mocking한 함수가 호출횟수 및 호출 여부를 알기위해 사용된다
