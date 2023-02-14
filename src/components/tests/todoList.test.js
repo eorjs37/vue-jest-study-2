@@ -40,7 +40,7 @@ describe('todo list component', () => {
 
   test('list가 한개 이상일 경우 ', async () => {
     await wrapper.setProps({
-      list: [{ idx: 1, text: '' }],
+      list: mockData,
     });
     expect(wrapper.find('.list').exists()).toBeTruthy();
   });
