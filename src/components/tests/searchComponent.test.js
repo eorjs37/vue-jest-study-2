@@ -26,4 +26,17 @@ describe('search component', () => {
 
     expect(contentsInput.element.value).toBe(contents);
   });
+
+  test('검색버튼 클릭 후 emit("searchClick")을 호출한다', async () => {
+    const titleInput = wrapper.find('#title');
+    await titleInput.setValue(title);
+    const contentsInput = wrapper.find('#contents');
+    await contentsInput.setValue(contents);
+    wrapper.find('#search').trigger('click');
+    expect(wrapper.emitted()).toHaveProperty('searchClick');
+
+    const event = wrapper.emitted('searchClick');
+
+    expect(...event[0]).toEqual({ title, contents });
+  });
 });

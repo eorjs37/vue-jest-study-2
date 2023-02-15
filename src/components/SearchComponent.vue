@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="search-button">
-    <button type="button">검색</button>
+    <button type="button" id="search" @click="handleClick">검색</button>
   </div>
 </template>
 
@@ -18,13 +18,21 @@
 import { ref } from '@vue/reactivity';
 export default {
   emits: ['searchClick'],
-  setup() {
+  setup(_, { emit }) {
     const title = ref('');
     const contents = ref('');
+
+    const handleClick = () => {
+      emit('searchClick', {
+        title: title.value,
+        contents: contents.value,
+      });
+    };
 
     return {
       title,
       contents,
+      handleClick,
     };
   },
 };
