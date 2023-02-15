@@ -4,20 +4,26 @@ import SearchComponent from '@/components/SearchComponent.vue';
  * 1.검색조건은 제목과 내용으로 이루어진다.
  * 2.검색버튼을 누르면 emit을 통해 부모에게 데이터 전달한다
  */
-var wrapper = null;
+let wrapper = null;
 beforeEach(() => {
+  //mount
   wrapper = shallowMount(SearchComponent);
 });
 
 describe('search component', () => {
   const title = '테스트제목';
   const contents = '테스트 컨텐츠';
+  test('title input 입력값 세팅후 input[id="title"]의 value값과 비교한다', async () => {
+    const titleInput = wrapper.find('#title');
+    await titleInput.setValue(title);
 
-  console.log(wrapper);
+    expect(titleInput.element.value).toBe(title);
+  });
 
-  test('title input 입력값과 ref으로 선언된 title과 값이 맞는지 비교한다', () => {});
+  test('contents input 입력값 세팅후 input[id="contents"]의 value값과 비교한다', async () => {
+    const contentsInput = wrapper.find('#contents');
+    await contentsInput.setValue(contents);
 
-  test('contents input 입력값과 ref으로 선언된 contents 값이 맞는지 비교한다', () => {});
-
-  test('검색버튼을 통해 emit를 호출한다', () => {});
+    expect(contentsInput.element.value).toBe(contents);
+  });
 });
