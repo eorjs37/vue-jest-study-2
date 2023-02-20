@@ -1,4 +1,4 @@
-import ToDoList from '@/components/ToDoList.vue';
+import ToDoList from '@/components/ToDoListComponent.vue';
 import { shallowMount } from '@vue/test-utils';
 
 /**
