@@ -4,8 +4,6 @@ import SearchComponent from '@/components/SearchComponent.vue';
 import ToDoListComponent from '@/components/ToDoListComponent.vue';
 import * as api from '@/api';
 
-jest.mock('@/api');
-
 let mockData = [
   {
     Idx: 1,
@@ -21,6 +19,27 @@ let mockData = [
   },
 ];
 
+jest.mock('@/api', () => {
+  return {
+    todoList: jest.fn().mockResolvedValue({
+      data: [
+        {
+          Idx: 1,
+          ToDoItem: 'css 공부',
+          createdAt: '2023-02-01T15:00:00.000Z',
+          updatedAt: '2023-02-01T15:00:00.000Z',
+        },
+        {
+          Idx: 2,
+          ToDoItem: 'Java 공부',
+          createdAt: '2023-02-01T15:00:00.000Z',
+          updatedAt: '2023-02-01T15:00:00.000Z',
+        },
+      ],
+    }),
+  };
+});
+
 let wrapper = null;
 
 beforeEach(() => {
@@ -29,9 +48,11 @@ beforeEach(() => {
 
 describe('todo list 페이지', () => {
   test('api 호출', async () => {
-    jest.spyOn(api, 'todoList').mockReturnValue(mockData);
+    jest.spyOn(api, 'todoList');
     expect(api.todoList).toBeCalledTimes(1);
-    expect(api.todoList()).toEqual(mockData);
+    api.todoList().then(res => {
+      expect(res.data).toEqual(mockData);
+    });
   });
   test('SearchComponent emit["searchClick"] 호출', async () => {
     const spy = jest.spyOn(wrapper.vm, 'onSearchClick');
