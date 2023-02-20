@@ -1,5 +1,5 @@
 <template>
-  <search-component @searchClick="onSearchClick"></search-component>
+  <search-component @searchClick="val => onSearchClick(val)"></search-component>
 </template>
 
 <script>
@@ -8,7 +8,7 @@ export default {
   components: { SearchComponent },
   setup() {
     const onSearchClick = search => {
-      console.log('ddd', search);
+      console.log('search : ', search);
     };
 
     return {
