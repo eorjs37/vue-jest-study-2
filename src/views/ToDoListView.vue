@@ -1,6 +1,6 @@
 <template>
   <search-component @searchClick="val => onSearchClick(val)"></search-component>
-  <to-do-list-component></to-do-list-component>
+  <to-do-list-component :list="todolist"></to-do-list-component>
 </template>
 
 <script>
@@ -17,12 +17,13 @@ export default {
     };
 
     onMounted(() => {
-      todoList().then(res => {
-        // console.log(res.data);
-      });
-      // .catch(error => {
-      //   console.error('error : ', error);
-      // });
+      todoList()
+        .then(res => {
+          todolist.value = res.data;
+        })
+        .catch(error => {
+          console.error('error : ', error);
+        });
     });
 
     return {
