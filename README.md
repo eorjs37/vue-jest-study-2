@@ -68,3 +68,17 @@ module.exports = {
 ### shallowMount
 
 > 자식의 컴퍼넌트까지 렌더링 하지는 않는다.
+
+### 🙆‍♂️ jest 하면서 배운것 기록
+
+## [20230201](https://github.com/eorjs37/vue-jest-study-2/tree/master/record/20230201)
+
+## [20230205](https://github.com/eorjs37/vue-jest-study-2/tree/master/record/20230205)
+
+## [20230207](https://github.com/eorjs37/vue-jest-study-2/tree/master/record/20230207)
+
+## [20230213](https://github.com/eorjs37/vue-jest-study-2/tree/master/record/20230213)
+
+## [20230214](https://github.com/eorjs37/vue-jest-study-2/tree/master/record/20230214)
+
+## [20230216](https://github.com/eorjs37/vue-jest-study-2/tree/master/record/20230216)
