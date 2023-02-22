@@ -1,5 +1,5 @@
 import ToDoListView from '@/views/ToDoListView.vue';
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import SearchComponent from '@/components/SearchComponent.vue';
 import ToDoListComponent from '@/components/ToDoListComponent.vue';
 import * as api from '@/api';
@@ -29,7 +29,7 @@ jest.mock('@/api', () => {
 });
 
 beforeEach(() => {
-  wrapper = shallowMount(ToDoListView);
+  wrapper = mount(ToDoListView);
   mockData = [
     {
       Idx: 1,
@@ -70,11 +70,12 @@ describe('todo list 페이지', () => {
 
   //todolist api error 발생
   test('todolist api 호출 후 에러 발생', async () => {
-    jest.spyOn(api, 'todoList').mockRejectedValue(new Error('cannot login'));
-    api.todoList().catch(error => {
+    jest.spyOn(api, 'todoList').mockRejectedValue(new Error(`에러가 발생하였습니다.`));
+    api.todoList().catch(async error => {
       //에러 진행중
-      //console.log('error : ', error);
+      expect(error.message).toBe(`에러가 발생하였습니다.`);
+      //리스트 비우기
+      //await wrapper.find('.list').setValue([]);
     });
-    expect(1).toBe(1);
   });
 });
