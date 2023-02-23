@@ -1,5 +1,5 @@
 import ToDoListView from '@/views/ToDoListView.vue';
-import { shallowMount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import SearchComponent from '@/components/SearchComponent.vue';
 import ToDoListComponent from '@/components/ToDoListComponent.vue';
 import * as api from '@/api';
@@ -53,6 +53,8 @@ describe('todo list 페이지', () => {
     expect(api.todoList).toBeCalledTimes(1);
     api.todoList().then(res => {
       expect(res.data).toEqual(mockData);
+      wrapper.vm.todolist = mockData;
+      expect(wrapper.find('.list').exists()).toBeTruthy();
     });
   });
 
@@ -74,8 +76,8 @@ describe('todo list 페이지', () => {
     api.todoList().catch(async error => {
       //에러 진행중
       expect(error.message).toBe(`에러가 발생하였습니다.`);
-      //리스트 비우기
-      //await wrapper.find('.list').setValue([]);
+      wrapper.vm.todolist = [];
+      expect(wrapper.find('.no-list').text()).toBe('리스트가 존재하지 않습니다.');
     });
   });
 });
