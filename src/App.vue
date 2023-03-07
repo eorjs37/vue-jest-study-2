@@ -2,4 +2,8 @@
   <router-view />
 </template>
 
-<style></style>
+<style lang="css">
+body {
+  margin: 0;
+}
+</style>
