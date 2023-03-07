@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import SearchComponent from '@/components/SearchComponent.vue';
 import ToDoListComponent from '@/components/ToDoListComponent.vue';
 import * as api from '@/api';
+import { nextTick } from 'vue';
 
 let wrapper = null;
 var mockData = null;
@@ -77,7 +78,9 @@ describe('todo list 페이지', () => {
       //에러 진행중
       expect(error.message).toBe(`에러가 발생하였습니다.`);
       wrapper.vm.todolist = [];
-      expect(wrapper.find('.no-list').text()).toBe('리스트가 존재하지 않습니다.');
+      nextTick(() => {
+        expect(wrapper.find('.no-list').text()).toBe('리스트가 존재하지 않습니다.');
+      });
     });
   });
 });

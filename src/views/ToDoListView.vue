@@ -12,9 +12,7 @@ export default {
   components: { SearchComponent, ToDoListComponent },
   setup() {
     const todolist = ref([]);
-    const onSearchClick = search => {
-      //console.log('search : ', search);
-    };
+    const onSearchClick = search => {};
 
     onMounted(() => {
       todoList()

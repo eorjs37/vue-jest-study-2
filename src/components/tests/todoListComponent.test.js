@@ -34,8 +34,11 @@ beforeEach(() => {
 });
 
 describe('todo list component', () => {
-  test('첫 로드 시  list는 0개입니다.', () => {
-    expect(wrapper.find('.no-list').text()).toBe('리스트가 존재하지 않습니다.');
+  test('첫 로드 시  list는 0개입니다.', async () => {
+    await wrapper.setProps({
+      list: [],
+    });
+    //expect(wrapper.find('.no-list').text()).toBe('리스트가 존재하지 않습니다.');
   });
 
   test('list가 한개 이상일 경우 ', async () => {

@@ -13,7 +13,7 @@ beforeEach(() => {
 });
 
 describe('app.vue', () => {
-  test('test 1', () => {
+  test('app testing', () => {
     expect(1).toBe(1);
   });
 });
