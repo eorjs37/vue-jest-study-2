@@ -25,4 +25,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.list {
+  padding-left: 0;
+  list-style: none;
+}
+</style>
