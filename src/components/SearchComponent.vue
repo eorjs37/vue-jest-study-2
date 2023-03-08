@@ -15,16 +15,19 @@
   </section>
   <section class="search-button">
     <button type="button" id="search" @click="handleClick">검색</button>
+    <button type="button" id="addtodo" @click="move">추가</button>
   </section>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity';
+import { useRouter } from 'vue-router';
 export default {
   emits: ['searchClick'],
   setup(_, { emit }) {
     const title = ref('');
     const contents = ref('');
+    const router = useRouter();
 
     const handleClick = () => {
       emit('searchClick', {
@@ -33,10 +36,15 @@ export default {
       });
     };
 
+    const move = () => {
+      //router.push('/add');
+    };
+
     return {
       title,
       contents,
       handleClick,
+      move,
     };
   },
 };

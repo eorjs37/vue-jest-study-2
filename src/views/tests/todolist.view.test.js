@@ -4,6 +4,7 @@ import SearchComponent from '@/components/SearchComponent.vue';
 import ToDoListComponent from '@/components/ToDoListComponent.vue';
 import * as api from '@/api';
 import { nextTick } from 'vue';
+import router from '@/router/index';
 
 let wrapper = null;
 var mockData = null;
@@ -30,7 +31,11 @@ jest.mock('@/api', () => {
 });
 
 beforeEach(() => {
-  wrapper = mount(ToDoListView);
+  wrapper = mount(ToDoListView, {
+    global: {
+      plugins: [router],
+    },
+  });
   mockData = [
     {
       Idx: 1,
