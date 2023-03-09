@@ -1,7 +1,6 @@
 import App from '@/App.vue';
 import { mount } from '@vue/test-utils';
 import router from '@/router/index';
-
 let wrapper = null;
 
 beforeEach(() => {
@@ -13,7 +12,8 @@ beforeEach(() => {
 });
 
 describe('app.vue', () => {
-  test('app testing', () => {
-    expect(1).toBe(1);
+  test('add 화면 이동', async () => {
+    router.push('/add');
+    await wrapper.vm.$nextTick();
   });
 });

@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import SearchComponent from '@/components/SearchComponent.vue';
-
+import router from '@/router/index';
 /**
  * 1.검색조건은 제목과 내용으로 이루어진다.
  * 2.검색버튼을 누르면 emit을 통해 부모에게 데이터 전달한다
@@ -8,7 +8,11 @@ import SearchComponent from '@/components/SearchComponent.vue';
 let wrapper = null;
 beforeEach(() => {
   //mount
-  wrapper = shallowMount(SearchComponent);
+  wrapper = shallowMount(SearchComponent, {
+    global: {
+      plugins: [router],
+    },
+  });
 });
 
 describe('search component', () => {
@@ -43,5 +47,6 @@ describe('search component', () => {
 
   test('추가 버튼을 클릭하면 add으로 이동한다.', async () => {
     wrapper.find('#addtodo').trigger('click');
+    router.push('/add');
   });
 });
