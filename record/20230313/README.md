@@ -1,10 +1,18 @@
+## 2023-03-13
+
+## router testing
+
+> 라우터를 테스트 하는방법은 실제 라우터를 가져오는 방법이 있다. 아래 코드는 router를 실제 component에 가져오는 방법이다.
+
+```javascript
 import App from '@/App.vue';
 import { mount } from '@vue/test-utils';
-import ToDoWriteView from '../views/ToDoWriteView.vue';
-import ToDoModifyView from '../views/ToDoModifyView.vue';
 import router from '@/router/index';
+import ToDoWriteView from '../views/ToDoWriteView.vue';
+
 let wrapper = null;
 
+//router import
 beforeEach(() => {
   wrapper = mount(App, {
     global: {
@@ -15,12 +23,10 @@ beforeEach(() => {
 
 describe('app.vue', () => {
   test('ToDoWriteView 화면 이동', async () => {
+    //router를 통해 이동
     await router.push({ name: 'addTodo' });
+    //findComponent를 통해 컴퍼넌트가 존재하는지 확인
     expect(wrapper.findComponent(ToDoWriteView).exists()).toBe(true);
   });
-
-  test('ToDoModifyView 화면 이동 ', async () => {
-    await router.push({ name: 'modifyToDo' });
-    expect(wrapper.findComponent(ToDoModifyView).exists()).toBe(true);
-  });
 });
+```
