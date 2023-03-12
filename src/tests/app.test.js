@@ -1,5 +1,6 @@
 import App from '@/App.vue';
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+import ToDoWriteView from '../views/ToDoWriteView.vue';
 import ToDoListView from '../views/ToDoListView.vue';
 import router from '@/router/index';
 let wrapper = null;
@@ -13,12 +14,12 @@ beforeEach(() => {
 });
 
 describe('app.vue', () => {
-  test('add 화면 이동', async () => {
+  test('ToDoWriteView 화면 이동', async () => {
     router.push('/add');
     await router.isReady();
-    console.log(wrapper.html());
-    console.log(wrapper.findComponent(ToDoListView).exists());
-    console.log(wrapper.find('#todowrite').exists());
-    //expect(wrapper.findC)
+
+    expect(wrapper.findComponent(ToDoWriteView).exists()).toBe(true);
   });
+
+  test('ToDoListView 화면 이동 ', async () => {});
 });
