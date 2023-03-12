@@ -11,6 +11,11 @@ const routes = [
     name: 'addTodo',
     component: () => import('../views/ToDoWriteView.vue'),
   },
+  {
+    path: '/modify',
+    name: 'modifyToDo',
+    component: () => import('../views/ToDoModifyView.vue'),
+  },
 ];
 
 const router = createRouter({

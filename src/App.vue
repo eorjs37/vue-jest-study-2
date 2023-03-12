@@ -1,5 +1,4 @@
 <template>
-  <h1>tesx</h1>
   <router-view />
 </template>
 
