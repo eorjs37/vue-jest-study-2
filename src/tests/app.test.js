@@ -1,5 +1,6 @@
 import App from '@/App.vue';
-import { mount } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
+import ToDoListView from '../views/ToDoListView.vue';
 import router from '@/router/index';
 let wrapper = null;
 
@@ -14,6 +15,10 @@ beforeEach(() => {
 describe('app.vue', () => {
   test('add 화면 이동', async () => {
     router.push('/add');
-    await wrapper.vm.$nextTick();
+    await router.isReady();
+    console.log(wrapper.html());
+    console.log(wrapper.findComponent(ToDoListView).exists());
+    console.log(wrapper.find('#todowrite').exists());
+    //expect(wrapper.findC)
   });
 });
