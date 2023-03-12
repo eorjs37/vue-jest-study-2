@@ -16,16 +16,12 @@ beforeEach(() => {
 
 describe('app.vue', () => {
   test('ToDoWriteView 화면 이동', async () => {
-    router.push('/add');
-    await router.isReady();
+    await router.push({ name: 'addTodo' });
     expect(wrapper.findComponent(ToDoWriteView).exists()).toBe(true);
-    await wrapper.vm.$nextTick();
   });
 
   test('ToDoModifyView 화면 이동 ', async () => {
-    router.push('/modify');
-    await router.isReady();
-
+    await router.push({ name: 'modifyToDo' });
     expect(wrapper.findComponent(ToDoModifyView).exists()).toBe(true);
   });
 });
