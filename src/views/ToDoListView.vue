@@ -27,6 +27,7 @@ export default {
     };
 
     onMounted(() => {
+      console.log('call onSearchClick');
       todoList()
         .then(res => {
           todolist.value = res.data;
