@@ -1,16 +1,37 @@
 import App from '@/App.vue';
-import { mount, flushPromises } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import ToDoWriteView from '../views/ToDoWriteView.vue';
 import ToDoModifyView from '../views/ToDoModifyView.vue';
 import ToDoListView from '../views/ToDoListView.vue';
 import router from '@/router/index';
 let wrapper = null;
 
+//가짜 만들기
+jest.mock('@/api', () => {
+  return {
+    todoList: jest.fn().mockResolvedValue({
+      data: [
+        {
+          Idx: 1,
+          ToDoItem: 'css 공부',
+          createdAt: '2023-02-01T15:00:00.000Z',
+          updatedAt: '2023-02-01T15:00:00.000Z',
+        },
+        {
+          Idx: 2,
+          ToDoItem: 'Java 공부',
+          createdAt: '2023-02-01T15:00:00.000Z',
+          updatedAt: '2023-02-01T15:00:00.000Z',
+        },
+      ],
+    }),
+  };
+});
+
 beforeEach(() => {
   wrapper = mount(App, {
     global: {
       plugins: [router],
-      stubs: { ToDoListView: true },
     },
   });
 });
@@ -28,8 +49,6 @@ describe('app.vue', () => {
 
   test('ToDoListView 화면 이동', async () => {
     await router.push({ name: 'todolist' });
-
-    console.log(wrapper.html());
-    //expect(wrapper.findComponent(ToDoListView).exists()).toBe(true);
+    expect(wrapper.findComponent(ToDoListView).exists()).toBe(true);
   });
 });
