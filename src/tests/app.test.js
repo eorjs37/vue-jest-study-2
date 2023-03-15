@@ -6,27 +6,10 @@ import ToDoListView from '../views/ToDoListView.vue';
 import router from '@/router/index';
 let wrapper = null;
 
-//가짜 만들기
-jest.mock('@/api', () => {
-  return {
-    todoList: jest.fn().mockResolvedValue({
-      data: [
-        {
-          Idx: 1,
-          ToDoItem: 'css 공부',
-          createdAt: '2023-02-01T15:00:00.000Z',
-          updatedAt: '2023-02-01T15:00:00.000Z',
-        },
-        {
-          Idx: 2,
-          ToDoItem: 'Java 공부',
-          createdAt: '2023-02-01T15:00:00.000Z',
-          updatedAt: '2023-02-01T15:00:00.000Z',
-        },
-      ],
-    }),
-  };
-});
+jest.mock('../views/ToDoListView.vue', () => ({
+  name: 'ToDoListView',
+  template: `<div></div>`,
+}));
 
 beforeEach(() => {
   wrapper = mount(App, {
