@@ -2,7 +2,7 @@
   <h1 id="todowrite">todowrite11</h1>
   <input type="text" class="title" v-model="titleValue" />
 
-  <button type="button" class="add">추가</button>
+  <button type="button" class="add" @click="buttonApi">추가</button>
 </template>
 
 <script>
@@ -12,6 +12,8 @@ export default {
     const titleValue = ref('');
 
     const callApi = () => {};
+
+    const buttonApi = () => {};
 
     watch(
       () => titleValue.value,
@@ -24,6 +26,8 @@ export default {
 
     return {
       titleValue,
+
+      buttonApi,
     };
   },
 };
