@@ -6,7 +6,6 @@ import ToDoWriteView from '../ToDoWriteView.vue';
  2. input에 enter 또는 완료 버튼을 누르면 값이 비어있는지 체크 후 있으면 
  */
 let wrapper = null;
-let callApiSpy = null;
 jest.spyOn(window, 'alert').mockImplementation(() => {});
 
 beforeEach(async () => {
