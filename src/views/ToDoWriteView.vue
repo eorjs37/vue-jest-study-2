@@ -20,6 +20,7 @@ export default {
       cur => {
         if (cur) {
           callApi();
+          buttonApi();
         }
       }
     );

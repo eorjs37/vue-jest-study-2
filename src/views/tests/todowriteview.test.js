@@ -41,4 +41,13 @@ describe('todowrite testing', () => {
     const button = wrapper.find('.add');
     await button.trigger('click');
   });
+
+  test('callApi 호출 여부', async () => {
+    const input = wrapper.find('.title');
+    await input.setValue('오늘의 할일3');
+
+    const spy = jest.spyOn(wrapper.vm, 'buttonApi');
+
+    //expect(spy).toHaveBeenCalled();
+  });
 });
