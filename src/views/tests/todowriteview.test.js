@@ -6,10 +6,12 @@ import ToDoWriteView from '../ToDoWriteView.vue';
  2. input에 enter 또는 완료 버튼을 누르면 값이 비어있는지 체크 후 있으면 
  */
 let wrapper = null;
+let callApi = null;
 jest.spyOn(window, 'alert').mockImplementation(() => {});
 
 beforeEach(async () => {
   wrapper = await shallowMount(ToDoWriteView);
+  callApi = wrapper.vm.callApi = jest.fn();
 });
 
 describe('todowrite testing', () => {
@@ -22,7 +24,6 @@ describe('todowrite testing', () => {
   test('.title 값이 변경될때마다, callApi 함수를 호출한다', async () => {
     const input = wrapper.find('.title');
     await input.setValue('오늘의 할일2');
-    const callApi = (wrapper.vm.callApi = jest.fn());
     callApi();
     expect(callApi).toBeCalledTimes(1);
   });
