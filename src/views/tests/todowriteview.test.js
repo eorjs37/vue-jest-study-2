@@ -5,6 +5,7 @@ import ToDoWriteView from '../ToDoWriteView.vue';
  1. input에 글을 작성한다.
  2. input에 enter 또는 완료 버튼을 누르면 값이 비어있는지 체크 후 있으면 
  */
+
 let wrapper = null;
 let callApi = null;
 jest.spyOn(window, 'alert').mockImplementation(() => {});
@@ -40,14 +41,5 @@ describe('todowrite testing', () => {
   test('추가하기 버튼을 누르고 callApi 함수를 호출한다.', async () => {
     const button = wrapper.find('.add');
     await button.trigger('click');
-  });
-
-  test('callApi 호출 여부', async () => {
-    const input = wrapper.find('.title');
-    await input.setValue('오늘의 할일3');
-
-    const spy = jest.spyOn(wrapper.vm, 'buttonApi');
-
-    //expect(spy).toHaveBeenCalled();
   });
 });
