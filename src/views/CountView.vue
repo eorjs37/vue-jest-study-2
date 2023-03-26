@@ -1,6 +1,7 @@
 <template>
   <h1>countview</h1>
-  <p>
+  <button @click="addCount"></button>
+  <p class="count-result">
     {{ compCont }}
   </p>
 </template>
@@ -16,8 +17,13 @@ export default {
       return store.getters.getCount;
     });
 
+    const addCount = () => {
+      store.commit('increment');
+    };
+
     return {
       compCont,
+      addCount,
     };
   },
 };
