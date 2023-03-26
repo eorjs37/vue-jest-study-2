@@ -14,7 +14,6 @@ beforeEach(async () => {
 describe('Count view testing', () => {
   test('store의 count를 1 증가시킨다', async () => {
     await wrapper.find('button').trigger('click');
-    console.log(wrapper.find('.count-result'));
     expect(Number(wrapper.find('.count-result').text())).toBe(1);
   });
 });
