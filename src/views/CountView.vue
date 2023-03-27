@@ -9,9 +9,10 @@
 <script>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import { key } from '@/store/store';
 export default {
   setup() {
-    const store = useStore();
+    const store = useStore(key);
 
     const compCont = computed(() => {
       return store.getters.getCount;

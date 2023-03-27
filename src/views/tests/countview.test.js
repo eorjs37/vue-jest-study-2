@@ -1,12 +1,15 @@
 import { shallowMount } from '@vue/test-utils';
 import CountView from '../CountView.vue';
 import { store } from '@/store';
+import { key } from '@/store/store';
 let wrapper = null;
 
 beforeEach(async () => {
   wrapper = await shallowMount(CountView, {
     global: {
-      plugins: [store],
+      provide: {
+        [key]: store,
+      },
     },
   });
 });
