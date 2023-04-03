@@ -1,6 +1,7 @@
 <template>
   <h1>countview</h1>
-  <button @click="addCount"></button>
+  <button id="addbtn" @click="addCount">더하기</button>
+  <button id="asyncbtn" @click="callAction">action 호출</button>
   <p class="count-result">
     {{ compCont }}
   </p>
@@ -22,9 +23,16 @@ export default {
       store.commit('increment');
     };
 
+    const callAction = () => {
+      store.dispatch('getAsnyc').then(res => {
+        const { success, list } = res;
+      });
+    };
+
     return {
       compCont,
       addCount,
+      callAction,
     };
   },
 };
