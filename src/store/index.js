@@ -16,6 +16,25 @@ const store = createStore({
       return state.count;
     },
   },
+  actions: {
+    getAsnyc() {
+      return new Promise(resolve => {
+        resolve({
+          success: true,
+          list: [
+            {
+              id: 1,
+              text: '자바',
+            },
+            {
+              id: 2,
+              text: '자바스크립트',
+            },
+          ],
+        });
+      });
+    },
+  },
 });
 
 export { store };
